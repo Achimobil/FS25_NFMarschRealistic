@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="no" ?>
+<modDesc descVersion="96">
+    <author>Achimobil</author>
+    <version>0.0.0.1</version>
+    <title>
+        <de>NF Marsch Realistik Erweiterung</de>
+        <en>NF Marsch Realistic Extension</en>
+    </title>
+    <description>
+        <de><![CDATA[
+]]></de>
+        <en><![CDATA[
+]]></en>
+    </description>
+
+    <iconFilename>icon_InfoDisplayExtension.dds</iconFilename>
+
+    <multiplayer supported="true"/>
+
+    <!-- <extraSourceFiles> -->
+        <!-- <sourceFile filename="InfoDisplayExtension.lua"/> -->
+    <!-- </extraSourceFiles> -->
+
+    <!-- <l10n filenamePrefix="translations/translation"/> -->
+</modDesc>
