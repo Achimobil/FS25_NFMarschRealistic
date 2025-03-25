@@ -23,12 +23,6 @@ function ChangePalletsExtension:loadFinished(superFunc)
                 end
             end)
         end)
-
---         local height = xmlFile:getValue("vehicle.base.size#height");
---         Logging.info("ChangePalletsExtension height: %s", height);
---         if height == nil then
---             xmlFile:setValue("vehicle.base.size#height", 0.9);
---         end
     end
 
     superFunc(self);

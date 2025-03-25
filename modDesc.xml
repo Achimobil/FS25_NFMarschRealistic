@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="96">
     <author>Achimobil</author>
-    <version>0.0.0.2</version>
+    <version>0.0.0.3</version>
     <title>
         <de>NF Marsch Realistik Erweiterung</de>
         <en>NF Marsch Realistic Extension</en>
@@ -19,6 +19,7 @@
 
     <extraSourceFiles>
         <sourceFile filename="scripts/changePallets.lua"/>
+        <sourceFile filename="scripts/changeProductions.lua"/>
     </extraSourceFiles>
 
     <!-- <l10n filenamePrefix="translations/translation"/> -->
