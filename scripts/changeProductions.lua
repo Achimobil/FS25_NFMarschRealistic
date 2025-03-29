@@ -48,9 +48,19 @@ function StoreManagerExtension:loadItem(superFunc, rawXMLFilename, baseDir, cust
 
     if storeItem ~= nil and customEnvironment ~= nil then
         Logging.devInfo("ChangeProductionPoint rawXMLFilename: %s, customEnvironment %s", rawXMLFilename, customEnvironment);
-        if (string.find(customEnvironment, "FS25_Fed_Produktions_Pack") or string.find(customEnvironment, "FS25_NFMarsch4fach")) and not string.find(rawXMLFilename, "bga") then
-            storeItem.price = storeItem.price / 5;
-            storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
+        if (string.find(customEnvironment, "FS25_Fed_Produktions_Pack") ~= nil or string.find(customEnvironment, "FS25_NFMarsch4fach") ~= nil) then
+
+            -- nur die BGA die vorplatziert sind, sind zu teuer, andere dürfen nicht billiger werden
+            local isBga = string.find(rawXMLFilename, "bga") ~= nil;
+            local isMapBga = isBga and string.find(rawXMLFilename, "NFMarsch/placeables/sellingStations") ~= nil;
+            Logging.devInfo("isBga: %s, isMapBga: %s", isBga, isMapBga);
+            if isMapBga then
+                storeItem.price = storeItem.price / 10;
+                storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
+            elseif not isBga then
+                storeItem.price = storeItem.price / 5;
+                storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
+            end
         end
     end
 
