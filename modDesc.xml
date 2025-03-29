@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="96">
     <author>Achimobil</author>
-    <version>0.0.0.3</version>
+    <version>0.0.0.4</version>
     <title>
         <de>NF Marsch Realistik Erweiterung</de>
         <en>NF Marsch Realistic Extension</en>
     </title>
     <description>
-        <de><![CDATA[
+        <de><![CDATA[Dieser Mod ändert die für mich unrealistischen Dinge auf der NF Marsch. Nicht mehr und nicht weniger.
+
+Hier die Dinge die schon angepasst sind:
+- Paletten von 5000 auf 1000 reduziert
+- Alle Produktionen außer die Platzierbaren BGAs wurden um den Faktor 5 langsamer, günstiger und in der Lagermenge kleiner gemacht
+- Die Vorplatzierten BGAs wurden um etwa 40% günstiger gemacht
+
+Hier die Dinge die noch angepasst werden sollen, aber da ich diese Bereich noch nicht verwende, kommen diese noch:
+- Tiere generell durch anpassung von weniger Tiere im stall, realistische Futter, Mist, Milch mengen (Nach Vorbild von TL+ aus dem 22er)
+
+Der Mod wird von mir selbst nur auf Sharemods und Filesadmin hochgeladen. Jeglicher andere Upload ist verboten und somit illegal, Verlinkung nur mit Original-Downloadlink. KEIN Ersatzlink!
+Das Verändern oder erneutes Hochladen, ob ganz oder in Teilen, ist nicht gestattet!
+
+Vorschläge für weitere Anpassungen können gern im <a href="https://github.com/Achimobil/FS25_NFMarschRealistic">Github</a> gemacht werden.
 ]]></de>
-        <en><![CDATA[
+        <en><![CDATA[This mod changes the things on the NF march that are unrealistic for me. No more and no less.
+
+Here are the things that are already adjusted:
+- Pallets reduced from 5000 to 1000
+- All productions except the placeable BGAs have been made slower, cheaper and smaller in stock by a factor of 5
+- The pre-placed BGAs have been made about 40% cheaper
+
+Here are the things that are still to be adjusted, but since I don't use this area yet, they will come:
+- Animals in general by adjusting fewer animals in the barn, realistic feed, manure, milk quantities (modeled on TL+ from the 22)
+
+The mod is only uploaded by myself on Sharemods and Filesadmin. Any other upload is prohibited and therefore illegal, linking only with original download link. NO replacement link!
+Modifying or re-uploading, whether in whole or in part, is not permitted!
+
+Suggestions for further customizations can be made in the <a href=“https://github.com/Achimobil/FS25_NFMarschRealistic”>Github</a>.
 ]]></en>
     </description>
 
