@@ -22,7 +22,7 @@ function ChangeProductionPoint:onLoad(superFunc, savegame)
             ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#capacity", 5);
         end)
 
-        DebugUtil.printTableRecursively(xmlFile,"_",0,1)
+--         DebugUtil.printTableRecursively(xmlFile,"_",0,1)
 
     end
 
@@ -47,21 +47,33 @@ function StoreManagerExtension:loadItem(superFunc, rawXMLFilename, baseDir, cust
     local storeItem = superFunc(self, rawXMLFilename, baseDir, customEnvironment, isMod, isBundleItem, dlcTitle, extraContentId, ignoreAdd);
 
     if storeItem ~= nil and customEnvironment ~= nil then
-        Logging.devInfo("ChangeProductionPoint rawXMLFilename: %s, customEnvironment %s", rawXMLFilename, customEnvironment);
+        Logging.devInfo("StoreManagerExtension rawXMLFilename: %s, customEnvironment %s", rawXMLFilename, customEnvironment);
         if (string.find(customEnvironment, "FS25_Fed_Produktions_Pack") ~= nil or string.find(customEnvironment, "FS25_NFMarsch4fach") ~= nil) then
 
-            -- nur die BGA die vorplatziert sind, sind zu teuer, andere dürfen nicht billiger werden
-            local isBga = string.find(rawXMLFilename, "bga") ~= nil;
-            local isMapBga = isBga and string.find(rawXMLFilename, "NFMarsch/placeables/sellingStations") ~= nil;
-            Logging.devInfo("isBga: %s, isMapBga: %s", isBga, isMapBga);
-            if isMapBga then
-                storeItem.price = storeItem.price / 10;
-                storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
-            elseif not isBga then
-                storeItem.price = storeItem.price / 5;
-                storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
+            -- nicht alles billiger machen. Paletten hier ausnehmen
+            if string.find(rawXMLFilename:upper(), "PALETTEN") == nil then
+                -- nur die BGA die vorplatziert sind, sind zu teuer, andere dürfen nicht billiger werden
+                local isBga = string.find(rawXMLFilename, "bga") ~= nil;
+                local isMapBga = isBga and string.find(rawXMLFilename, "NFMarsch/placeables/sellingStations") ~= nil;
+                if isMapBga then
+                    Logging.devInfo("Change Map BGA store item: %s", rawXMLFilename);
+                    storeItem.price = storeItem.price / 10;
+                    storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
+                elseif not isBga and storeItem.categoryName == "PRODUCTIONPOINTS" then
+                    Logging.devInfo("Change Non BGA store item: %s", rawXMLFilename);
+                    storeItem.price = storeItem.price / 5;
+                    storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
+                end
+--                 DebugUtil.printTableRecursively(storeItem,"_",0,1)
             end
         end
+
+        -- Paletten hier ändern wenn sie in den Storemanager geladen werden.
+        -- hierbei schema "vehicle" und pfad zur limitierun nutzen
+        -- das ist notwendig für das auslagern über den production storage control mod
+--         if (storeItem.xmlSchema.name == "vehicle") and string.find(storeItem.rawXMLFilename:upper(), "PALETTEN") ~= nil then
+--             DebugUtil.printTableRecursively(storeItem.configurations,"_",0,2)
+--         end
     end
 
     return storeItem;
