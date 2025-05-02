@@ -61,3 +61,41 @@ function ChangePalletsExtension:loadFillUnitFromXML(superFunc, xmlFile, key, ent
 end
 
 FillUnit.loadFillUnitFromXML = Utils.overwrittenFunction(FillUnit.loadFillUnitFromXML, ChangePalletsExtension.loadFillUnitFromXML)
+
+-- für den Baumarkt beim Kaufen, da dort die Preise für 5000er paletten sind und die paletten anders geladen werden
+NfmrPlaceablePalletBuyingStationExtension = {}
+
+function NfmrPlaceablePalletBuyingStationExtension:onLoad(superFunc, savegame)
+--     Logging.info("NfmrPlaceablePalletBuyingStationExtension.onLoad");
+--     local spec = self.spec_palletBuyingStation
+--     DebugUtil.printTableRecursively(spec.pallets,"_",0,1)
+
+    local key = "placeable.palletBuyingStation"
+    local i = 0
+    while true do
+        local fillTypeKey = string.format(key..".fillType(%d)", i)
+        if not self.xmlFile:hasProperty(fillTypeKey) then
+            break
+        end
+
+        local fillTypeStr = self.xmlFile:getValue(fillTypeKey.."#name")
+        local fillType = g_fillTypeManager:getFillTypeByName(fillTypeStr)
+
+        if fillType ~= nil then
+--             local fillTypeIndex = fillType.index
+            local palletFilename = fillType.palletFilename
+
+            if (string.find(palletFilename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(palletFilename, "FS25_NFMarsch4fach") ~= nil) then
+--                 local storeItem = g_storeManager:getItemByXMLFilename(palletFilename)
+--                 DebugUtil.printTableRecursively(storeItem.configurations,"_",0,2)
+                local priceScale = self.xmlFile:getValue(fillTypeKey.."#priceScale", 1.0)
+                self.xmlFile:setValue(fillTypeKey.."#priceScale", priceScale / 5)
+            end
+        end
+        i = i + 1
+    end
+
+    return superFunc(self, savegame);
+end
+
+PlaceablePalletBuyingStation.onLoad = Utils.overwrittenFunction(PlaceablePalletBuyingStation.onLoad, NfmrPlaceablePalletBuyingStationExtension.onLoad)

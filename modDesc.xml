@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="96">
+<modDesc descVersion="97">
     <author>Achimobil</author>
-    <version>0.1.1.0</version>
+    <version>0.1.1.1</version>
     <title>
         <de>NF Marsch Realistik Erweiterung</de>
         <en>NF Marsch Realistic Extension</en>
@@ -22,7 +22,10 @@ Das Verändern oder erneutes Hochladen, ob ganz oder in Teilen, ist nicht gestat
 
 Vorschläge für weitere Anpassungen können gern im <a href="https://github.com/Achimobil/FS25_NFMarschRealistic">Github</a> gemacht werden.
 
-Changelog 0.1.1.0
+Changelog
+0.1.1.1 - EK Preise für Baumarkt Paletten mit faktor 5 reduziert, da ja 1000er Paletten raus kommen.
+
+0.1.1.0
 - Gemeldete nicht funktionierende Paletten und Produktionen korrekturen gefixed
 ]]></de>
         <en><![CDATA[This mod changes the things on the NF march that are unrealistic for me. No more and no less.
