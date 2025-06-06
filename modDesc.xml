@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="97">
+<modDesc descVersion="99">
     <author>Achimobil</author>
     <version>0.1.1.1</version>
     <title>
@@ -17,16 +17,14 @@ Hier die Dinge die schon angepasst sind:
 Hier die Dinge die noch angepasst werden sollen, aber da ich diese Bereich noch nicht verwende, kommen diese noch:
 - Tiere generell durch anpassung von weniger Tiere im stall, realistische Futter, Mist, Milch mengen (Nach Vorbild von TL+ aus dem 22er)
 
-Der Mod wird von mir selbst nur auf Sharemods und Filesadmin hochgeladen. Jeglicher andere Upload ist verboten und somit illegal, Verlinkung nur mit Original-Downloadlink. KEIN Ersatzlink!
+Der Mod wird von mir selbst nur auf itch.io. Jeglicher andere Upload ist verboten und somit illegal, Verlinkung nur mit Original-Downloadlink. KEIN Ersatzlink!
 Das Verändern oder erneutes Hochladen, ob ganz oder in Teilen, ist nicht gestattet!
 
 Vorschläge für weitere Anpassungen können gern im <a href="https://github.com/Achimobil/FS25_NFMarschRealistic">Github</a> gemacht werden.
 
 Changelog
 0.1.1.1 - EK Preise für Baumarkt Paletten mit faktor 5 reduziert, da ja 1000er Paletten raus kommen.
-
-0.1.1.0
-- Gemeldete nicht funktionierende Paletten und Produktionen korrekturen gefixed
+0.1.1.0 - Gemeldete nicht funktionierende Paletten und Produktionen korrekturen gefixed
 ]]></de>
         <en><![CDATA[This mod changes the things on the NF march that are unrealistic for me. No more and no less.
 
@@ -38,13 +36,14 @@ Here are the things that are already adjusted:
 Here are the things that are still to be adjusted, but since I don't use this area yet, they will come:
 - Animals in general by adjusting fewer animals in the barn, realistic feed, manure, milk quantities (modeled on TL+ from the 22)
 
-The mod is only uploaded by myself on Sharemods and Filesadmin. Any other upload is prohibited and therefore illegal, linking only with original download link. NO replacement link!
+The mod is only uploaded by myself on itch.io. Any other upload is prohibited and therefore illegal, linking only with original download link. NO replacement link!
 Modifying or re-uploading, whether in whole or in part, is not permitted!
 
 Suggestions for further customizations can be made in the <a href=“https://github.com/Achimobil/FS25_NFMarschRealistic”>Github</a>.
 
-Changelog 0.1.1.0
-- Reported non-functioning pallets and production corrections fixed
+Changelog
+0.1.1.1 - Fixed prices for the bought pallets
+0.1.1.0 - Reported non-functioning pallets and production corrections fixed
 ]]></en>
     </description>
 
