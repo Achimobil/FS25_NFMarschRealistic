@@ -1,5 +1,5 @@
 ChangeProductionPoint = {};
-ChangeProductionPoint.Debug = true;
+ChangeProductionPoint.Debug = false;
 
 ---Print the text to the log. Example: ChangeProductionPoint.DebugText("Alter: %s", age)
 -- @param string text the text to print formated
