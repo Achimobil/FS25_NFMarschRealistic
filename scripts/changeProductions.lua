@@ -1,17 +1,29 @@
+ChangeProductionPoint = {};
+ChangeProductionPoint.Debug = true;
 
-ChangeProductionPoint = {}
+---Print the text to the log. Example: ChangeProductionPoint.DebugText("Alter: %s", age)
+-- @param string text the text to print formated
+-- @param any ... format parameter
+function ChangeProductionPoint.DebugText(text, ...)
+    if not ChangeProductionPoint.Debug then return end
+    print("ChangeProductionPointDebug: " .. string.format(text, ...));
+end
 
 function ChangeProductionPoint:onLoad(superFunc, savegame)
     local xmlFile = self.xmlFile;
 
-    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") or string.find(xmlFile.filename, "FS25_NFMarsch4fach")) and not string.find(xmlFile.filename, "bga") then
+    local skip = false;
+    if string.find(xmlFile.filename, "Futterfabrik") or string.find(xmlFile.filename, "bga") then
+        ChangeProductionPoint.DebugText("ChangeProductionPoint ignore xml: %s", xmlFile.filename);
+        skip = true;
+    end
 
-        Logging.devInfo("ChangeProductionPoint xmlFile: %s", xmlFile.filename);
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") or string.find(xmlFile.filename, "FS25_NFMarsch4fach")) and not skip then
+        ChangeProductionPoint.DebugText("ChangeProductionPoint xmlFile: %s", xmlFile.filename);
 
         local rootName = xmlFile:getRootName();
 
---         ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, rootName..".storeData.dailyUpkeep", 5);
-        ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, rootName..".storeData.price", 5); -- geht nicht
+        ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, rootName..".storeData.price", 5);
 
         xmlFile:iterate(rootName..".productionPoint.productions.production",function(_, key)
             ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#cyclesPerHour", 5);
@@ -32,7 +44,7 @@ end
 function ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, path, divisor)
     local oldValue = xmlFile:getValue(path);
     local newValue = oldValue / divisor;
-    Logging.devInfo("Change '%s' from %s to %s", path, oldValue, newValue);
+    ChangeProductionPoint.DebugText("Change '%s' from %s to %s", path, oldValue, newValue);
     xmlFile:setValue(path, newValue);
 end
 
@@ -41,13 +53,23 @@ PlaceableProductionPoint.onLoad = Utils.overwrittenFunction(PlaceableProductionP
 
 
 
-StoreManagerExtension = {}
+StoreManagerExtension = {};
+StoreManagerExtension.Debug = false;
+
+---Print the text to the log. Example: StoreManagerExtension.DebugText("Alter: %s", age)
+-- @param string text the text to print formated
+-- @param any ... format parameter
+function StoreManagerExtension.DebugText(text, ...)
+    if not StoreManagerExtension.Debug then return end
+    print("StoreManagerExtensionDebug: " .. string.format(text, ...));
+end
+
 function StoreManagerExtension:loadItem(superFunc, rawXMLFilename, baseDir, customEnvironment, isMod, isBundleItem, dlcTitle, extraContentId, ignoreAdd)
 
     local storeItem = superFunc(self, rawXMLFilename, baseDir, customEnvironment, isMod, isBundleItem, dlcTitle, extraContentId, ignoreAdd);
 
     if storeItem ~= nil and customEnvironment ~= nil then
-        Logging.devInfo("StoreManagerExtension rawXMLFilename: %s, customEnvironment %s", rawXMLFilename, customEnvironment);
+        StoreManagerExtension.DebugText("StoreManagerExtension rawXMLFilename: %s, customEnvironment %s", rawXMLFilename, customEnvironment);
         if (string.find(customEnvironment, "FS25_Fed_Produktions_Pack") ~= nil or string.find(customEnvironment, "FS25_NFMarsch4fach") ~= nil) then
 
             -- nicht alles billiger machen. Paletten hier ausnehmen
@@ -56,11 +78,11 @@ function StoreManagerExtension:loadItem(superFunc, rawXMLFilename, baseDir, cust
                 local isBga = string.find(rawXMLFilename, "bga") ~= nil;
                 local isMapBga = isBga and string.find(rawXMLFilename, "NFMarsch/placeables/sellingStations") ~= nil;
                 if isMapBga then
-                    Logging.devInfo("Change Map BGA store item: %s", rawXMLFilename);
+                    StoreManagerExtension.DebugText("Change Map BGA store item: %s", rawXMLFilename);
                     storeItem.price = storeItem.price / 10;
                     storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
                 elseif not isBga and storeItem.categoryName == "PRODUCTIONPOINTS" then
-                    Logging.devInfo("Change Non BGA store item: %s", rawXMLFilename);
+                    StoreManagerExtension.DebugText("Change Non BGA store item: %s", rawXMLFilename);
                     storeItem.price = storeItem.price / 5;
                     storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
                 end

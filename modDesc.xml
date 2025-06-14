@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="99">
     <author>Achimobil</author>
-    <version>0.1.1.1</version>
+    <version>0.1.2.0</version>
     <title>
         <de>NF Marsch Realistik Erweiterung</de>
         <en>NF Marsch Realistic Extension</en>
@@ -23,6 +23,7 @@ Das Verändern oder erneutes Hochladen, ob ganz oder in Teilen, ist nicht gestat
 Vorschläge für weitere Anpassungen können gern im <a href="https://github.com/Achimobil/FS25_NFMarschRealistic">Github</a> gemacht werden.
 
 Changelog
+0.1.2.0 - Futterfabrik nicht mehr runter setzen. Wird für realistische Fütterung so schnell benötigt
 0.1.1.1 - EK Preise für Baumarkt Paletten mit faktor 5 reduziert, da ja 1000er Paletten raus kommen.
 0.1.1.0 - Gemeldete nicht funktionierende Paletten und Produktionen korrekturen gefixed
 ]]></de>
