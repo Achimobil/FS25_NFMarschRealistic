@@ -43,6 +43,10 @@ end
 
 function ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, path, divisor)
     local oldValue = xmlFile:getValue(path);
+    if oldValue == nil then
+        ChangeProductionPoint.DebugText("'%s' is nil", path);
+        return;
+    end
     local newValue = oldValue / divisor;
     ChangeProductionPoint.DebugText("Change '%s' from %s to %s", path, oldValue, newValue);
     xmlFile:setValue(path, newValue);
