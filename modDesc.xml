@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="99">
+<modDesc descVersion="100">
     <author>Achimobil</author>
-    <version>0.1.3.0</version>
+    <version>0.1.3.1</version>
     <title>
         <de>NF Marsch Realistik Erweiterung</de>
         <en>NF Marsch Realistic Extension</en>
@@ -23,6 +23,7 @@ Das Verändern oder erneutes Hochladen, ob ganz oder in Teilen, ist nicht gestat
 Vorschläge für weitere Anpassungen können gern im <a href="https://github.com/Achimobil/FS25_NFMarschRealistic">Github</a> gemacht werden.
 
 Changelog
+0.1.3.1 - Kalkwerk ist nun für Produktion aus Wasser und Steinen nicht mehr gedrosselt, da Kalk für die eigenen Felder benötigt wird
 0.1.3.0 - Fix für Fischer Produktion (lua Fehler)
 0.1.2.0 - Futterfabrik nicht mehr runter setzen. Wird für realistische Fütterung so schnell benötigt
 0.1.1.1 - EK Preise für Baumarkt Paletten mit faktor 5 reduziert, da ja 1000er Paletten raus kommen.
@@ -44,6 +45,7 @@ Modifying or re-uploading, whether in whole or in part, is not permitted!
 Suggestions for further customizations can be made in the <a href=“https://github.com/Achimobil/FS25_NFMarschRealistic”>Github</a>.
 
 Changelog
+0.1.3.1 - Lime works are no longer restricted in terms of production from water and stones, as lime is needed for our own fields.
 0.1.3.0 - Fix for Fischer production (lua error)
 0.1.2.0 - Feed factory no longer set down. Needed for realistic feeding so quickly
 0.1.1.1 - Fixed prices for the bought pallets

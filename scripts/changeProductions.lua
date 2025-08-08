@@ -9,16 +9,50 @@ function ChangeProductionPoint.DebugText(text, ...)
     print("ChangeProductionPointDebug: " .. string.format(text, ...));
 end
 
+ChangeProductionPoint.SkipLines = {
+    ["Kalkwerk.xml"] = {
+        lime3 = true,
+        lime1 = true,
+        Canine = true
+    }
+}
+ChangeProductionPoint.SkipCapacities = {
+    ["Kalkwerk.xml"] = {
+        WATER = true,
+        STONE = true
+    }
+}
+
 function ChangeProductionPoint:onLoad(superFunc, savegame)
     local xmlFile = self.xmlFile;
 
-    local skip = false;
-    if string.find(xmlFile.filename, "Futterfabrik") or string.find(xmlFile.filename, "bga") then
-        ChangeProductionPoint.DebugText("ChangeProductionPoint ignore xml: %s", xmlFile.filename);
-        skip = true;
+    local skipProduction = true;
+
+    -- Only stuff from Fed should be changed, so when found, do not skip
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") or string.find(xmlFile.filename, "FS25_NFMarsch4fach")) then
+        skipProduction = false;
     end
 
-    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") or string.find(xmlFile.filename, "FS25_NFMarsch4fach")) and not skip then
+    if string.find(xmlFile.filename, "Futterfabrik") or string.find(xmlFile.filename, "bga") then
+        ChangeProductionPoint.DebugText("ChangeProductionPoint ignore xml: %s", xmlFile.filename);
+        skipProduction = true;
+    end
+
+    if not skipProduction then
+        -- get sub definition list if available
+        local skipLines = {};
+        for key, value in pairs(ChangeProductionPoint.SkipLines) do
+            if string.find(xmlFile.filename, key) ~= nil then
+                skipLines = value;
+            end
+        end
+        local skipCapacities = {};
+        for key, value in pairs(ChangeProductionPoint.SkipCapacities) do
+            if string.find(xmlFile.filename, key) ~= nil then
+                skipCapacities = value;
+            end
+        end
+
         ChangeProductionPoint.DebugText("ChangeProductionPoint xmlFile: %s", xmlFile.filename);
 
         local rootName = xmlFile:getRootName();
@@ -26,12 +60,43 @@ function ChangeProductionPoint:onLoad(superFunc, savegame)
         ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, rootName..".storeData.price", 5);
 
         xmlFile:iterate(rootName..".productionPoint.productions.production",function(_, key)
-            ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#cyclesPerHour", 5);
-            ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#costsPerActiveHour", 5);
+
+            -- some items should be skiped like the lime production from water/stone.
+            -- make them skip here
+            local skipLine = false;
+
+            local lineId = xmlFile:getValue(key.."#id");
+
+--             ChangeProductionPoint.DebugText("lineId: %s", lineId);
+--             DebugUtil.printTableRecursively(skipLines,"_",0,1)
+
+            if skipLines[lineId] ~= nil then
+                skipLine = true;
+            end
+
+            if not skipLine then
+                ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#cyclesPerHour", 5);
+                ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#costsPerActiveHour", 5);
+            end
         end)
 
         xmlFile:iterate(rootName..".productionPoint.storage.capacity",function(_, key)
-            ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#capacity", 5);
+            -- some items should be skiped like the lime production from water/stone.
+            -- make them skip here
+            local skipCapacity = false;
+
+            local fillType = xmlFile:getValue(key.."#fillType");
+
+--             ChangeProductionPoint.DebugText("lineId: %s", lineId);
+--             DebugUtil.printTableRecursively(skipCapacities,"_",0,1)
+
+            if skipCapacities[fillType] ~= nil then
+                skipCapacity = true;
+            end
+
+            if not skipCapacity then
+                ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#capacity", 5);
+            end
         end)
 
 --         DebugUtil.printTableRecursively(xmlFile,"_",0,1)
