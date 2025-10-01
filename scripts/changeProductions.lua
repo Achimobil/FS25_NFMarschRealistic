@@ -150,12 +150,13 @@ function StoreManagerExtension:loadItem(superFunc, rawXMLFilename, baseDir, cust
                     StoreManagerExtension.DebugText("Change Map BGA store item: %s", rawXMLFilename);
                     storeItem.price = storeItem.price / 10;
                     storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
-                elseif not isBga and storeItem.categoryName == "PRODUCTIONPOINTS" then
+                elseif not isBga and (storeItem.categoryName == "PRODUCTIONPOINTS" or storeItem.categoryName == "PLACEABLEMISC") then
                     StoreManagerExtension.DebugText("Change Non BGA store item: %s", rawXMLFilename);
                     storeItem.price = storeItem.price / 5;
                     storeItem.dailyUpkeep = storeItem.dailyUpkeep / 5;
+                else
+--                     DebugUtil.printTableRecursively(storeItem,"_",0,1)
                 end
---                 DebugUtil.printTableRecursively(storeItem,"_",0,1)
             end
         end
 
