@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="100">
     <author>Achimobil</author>
-    <version>0.1.3.2</version>
+    <version>0.1.3.3</version>
     <title>
         <de>NF Marsch Realistik Erweiterung</de>
         <en>NF Marsch Realistic Extension</en>
@@ -14,8 +14,8 @@ Hier die Dinge die schon angepasst sind:
 - Alle Produktionen außer die Platzierbaren BGAs wurden um den Faktor 5 langsamer, günstiger und in der Lagermenge kleiner gemacht
 - Die Vorplatzierten BGAs wurden um etwa 40% günstiger gemacht
 
-Hier die Dinge die noch angepasst werden sollen, aber da ich diese Bereich noch nicht verwende, kommen diese noch:
-- Tiere generell durch anpassung von weniger Tiere im stall, realistische Futter, Mist, Milch mengen (Nach Vorbild von TL+ aus dem 22er)
+Hier die Dinge die nicht angepasst werden sollen:
+- Tiere werden nicht angepasst, da dies mit M+ in hoher Wahrscheinlichkeit mit der Marsch Kompatibel kommen wird.
 
 Der Mod wird von mir selbst nur auf itch.io. Jeglicher andere Upload ist verboten und somit illegal, Verlinkung nur mit Original-Downloadlink. KEIN Ersatzlink!
 Das Verändern oder erneutes Hochladen, ob ganz oder in Teilen, ist nicht gestattet!
@@ -37,8 +37,8 @@ Here are the things that are already adjusted:
 - All productions except the placeable BGAs have been made slower, cheaper and smaller in stock by a factor of 5
 - The pre-placed BGAs have been made about 40% cheaper
 
-Here are the things that are still to be adjusted, but since I don't use this area yet, they will come:
-- Animals in general by adjusting fewer animals in the barn, realistic feed, manure, milk quantities (modeled on TL+ from the 22)
+Here are the things that should not be adjusted:
+- Animals will not be adjusted, as this will most likely be compatible with M+ in Marsch. 
 
 The mod is only uploaded by myself on itch.io. Any other upload is prohibited and therefore illegal, linking only with original download link. NO replacement link!
 Modifying or re-uploading, whether in whole or in part, is not permitted!
