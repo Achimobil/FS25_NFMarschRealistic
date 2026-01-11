@@ -101,6 +101,49 @@ function ChangeProductionPoint:onLoad(superFunc, savegame)
 
 --         DebugUtil.printTableRecursively(xmlFile,"_",0,1)
 
+        -- extended production points haben andere listen
+
+        xmlFile:iterate(rootName..".extendedProductionPoint.productions.production",function(_, key)
+
+            -- some items should be skiped like the lime production from water/stone.
+            -- make them skip here
+            local skipLine = false;
+
+            local lineId = xmlFile:getValue(key.."#id");
+
+--             ChangeProductionPoint.DebugText("lineId: %s", lineId);
+--             DebugUtil.printTableRecursively(skipLines,"_",0,1)
+
+            if skipLines[lineId] ~= nil then
+                skipLine = true;
+            end
+
+            if not skipLine then
+                ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#cyclesPerHour", 5);
+                ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#costsPerActiveHour", 5);
+            end
+        end)
+
+        xmlFile:iterate(rootName..".extendedProductionPoint.storage.capacity",function(_, key)
+            -- some items should be skiped like the lime production from water/stone.
+            -- make them skip here
+            local skipCapacity = false;
+
+            local fillType = xmlFile:getValue(key.."#fillType");
+
+--             ChangeProductionPoint.DebugText("lineId: %s", lineId);
+--             DebugUtil.printTableRecursively(skipCapacities,"_",0,1)
+
+            if skipCapacities[fillType] ~= nil then
+                skipCapacity = true;
+            end
+
+            if not skipCapacity then
+                ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, key.."#capacity", 5);
+            end
+        end)
+
+
     end
 
     superFunc(self, savegame)
@@ -172,6 +215,9 @@ function StoreManagerExtension:loadItem(superFunc, rawXMLFilename, baseDir, cust
 end
 
 StoreManager.loadItem = Utils.overwrittenFunction(StoreManager.loadItem, StoreManagerExtension.loadItem)
+
+
+FS25_Fed_Produktions_Pack.PlaceableExtendedProductionPoint.onLoad = Utils.overwrittenFunction(FS25_Fed_Produktions_Pack.PlaceableExtendedProductionPoint.onLoad, ChangeProductionPoint.onLoad)
 
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
-<modDesc descVersion="100">
+<modDesc descVersion="105">
     <author>Achimobil</author>
-    <version>0.1.3.3</version>
+    <version>0.1.3.4</version>
     <title>
         <de>NF Marsch Realistik Erweiterung</de>
         <en>NF Marsch Realistic Extension</en>
@@ -23,6 +23,7 @@ Das Verändern oder erneutes Hochladen, ob ganz oder in Teilen, ist nicht gestat
 Vorschläge für weitere Anpassungen können gern im <a href="https://github.com/Achimobil/FS25_NFMarschRealistic">Github</a> gemacht werden.
 
 Changelog
+0.1.3.4 - Schlachter wird nun auch in der Produktion korrekt vermindert.
 0.1.3.2 - Gewächshäuser sind im Preis nun auch um den Faktor 5 reduziert
 0.1.3.1 - Kalkwerk ist nun für Produktion aus Wasser und Steinen nicht mehr gedrosselt, da Kalk für die eigenen Felder benötigt wird
 0.1.3.0 - Fix für Fischer Produktion (lua Fehler)
@@ -38,7 +39,7 @@ Here are the things that are already adjusted:
 - The pre-placed BGAs have been made about 40% cheaper
 
 Here are the things that should not be adjusted:
-- Animals will not be adjusted, as this will most likely be compatible with M+ in Marsch. 
+- Animals will not be adjusted, as this will most likely be compatible with M+ in Marsch.
 
 The mod is only uploaded by myself on itch.io. Any other upload is prohibited and therefore illegal, linking only with original download link. NO replacement link!
 Modifying or re-uploading, whether in whole or in part, is not permitted!
