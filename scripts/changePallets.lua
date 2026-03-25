@@ -19,9 +19,16 @@ function ChangePalletsExtension:loadFinished(superFunc)
                 local capacity = xmlFile:getValue(fillUnitKey.."#capacity");
                 Logging.devInfo("ChangePalletsExtension capacity: " .. capacity);
 
+                -- Standard Marsch Paletten
                 if capacity == 5000 then
                     Logging.devInfo("Change PalletsExtension xmlFile: " .. xmlFile.filename);
                     xmlFile:setValue(fillUnitKey.."#capacity", 1000);
+                end
+
+                -- Prefab wall
+                if capacity == 10000 then
+                    Logging.devInfo("Change PalletsExtension xmlFile: " .. xmlFile.filename);
+                    xmlFile:setValue(fillUnitKey.."#capacity", 4000);
                 end
             end)
         end)
@@ -41,6 +48,11 @@ function ChangePalletsExtension.getCapacityFromXml(xmlFile, superFunc)
         capacity = 1000;
     end
 
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and capacity == 10000 then
+        Logging.devInfo("ChangePalletsExtension.getCapacityFromXml change %s", xmlFile.filename);
+        capacity = 4000;
+    end
+
     return capacity
 end
 
@@ -55,6 +67,12 @@ function ChangePalletsExtension:loadFillUnitFromXML(superFunc, xmlFile, key, ent
         Logging.devInfo("ChangePalletsExtension.loadFillUnitFromXML change %s", xmlFile.filename);
 --         DebugUtil.printTableRecursively(entry,"_",0,1)
         entry.capacity = 1000;
+    end
+
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and entry.capacity == 10000 then
+        Logging.devInfo("ChangePalletsExtension.loadFillUnitFromXML change %s", xmlFile.filename);
+--         DebugUtil.printTableRecursively(entry,"_",0,1)
+        entry.capacity = 4000;
     end
 
     return result;
