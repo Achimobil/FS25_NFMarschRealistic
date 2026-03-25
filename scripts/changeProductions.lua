@@ -14,12 +14,35 @@ ChangeProductionPoint.SkipLines = {
         lime3 = true,
         lime1 = true,
         Canine = true
+    },
+    ["FutterXL.xml"] = {
+        MischfutterTMR = true,
+        MischfutterTMRLuzerne = true,
+        MischfutterTMRKlee = true,
+        Schweinefutter = true,
+        Mineralfutter = true
     }
 }
 ChangeProductionPoint.SkipCapacities = {
     ["Kalkwerk.xml"] = {
         WATER = true,
         STONE = true
+    },
+    ["FutterXL.xml"] = {
+        DRYALFALFA_WINDROW = true,
+        SILAGE = true,
+        STRAW = true,
+        MINERAL_FEED = true,
+        DRYCLOVER_WINDROW = true,
+        DRYGRASS_WINDROW = true,
+        POTATO = true,
+        MAIZE = true,
+        WHEAT = true,
+        CANOLA = true,
+        WHEY = true,
+        BRAN = true,
+        LIME = true,
+        YEAST = true
     }
 }
 
