@@ -13,7 +13,7 @@ ChangeProductionPoint.SkipLines = {
     ["Kalkwerk.xml"] = {
         lime3 = true,
         lime1 = true,
-        Canine = true
+        lime5 = true
     },
     ["FutterXL.xml"] = {
         MischfutterTMR = true,
@@ -42,7 +42,9 @@ ChangeProductionPoint.SkipCapacities = {
         WHEY = true,
         BRAN = true,
         LIME = true,
-        YEAST = true
+        YEAST = true,
+        FORAGE = true,
+        pigFood = true
     }
 }
 
