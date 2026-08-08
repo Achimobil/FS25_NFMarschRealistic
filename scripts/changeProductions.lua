@@ -124,6 +124,8 @@ function ChangeProductionPoint:onLoad(superFunc, savegame)
             end
         end)
 
+        ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, rootName..".productionPoint.storage#fillLevelSyncThreshold", 5);
+
 --         DebugUtil.printTableRecursively(xmlFile,"_",0,1)
 
         -- extended production points haben andere listen
@@ -168,6 +170,7 @@ function ChangeProductionPoint:onLoad(superFunc, savegame)
             end
         end)
 
+        ChangeProductionPoint.ChangeXmlValueByDivisor(xmlFile, rootName..".extendedProductionPoint.storage#fillLevelSyncThreshold", 5);
 
     end
 

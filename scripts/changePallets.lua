@@ -1,44 +1,6 @@
 ChangePalletsExtension = {};
 -- Logging.info("ChangePalletsExtension");
 
-
-function ChangePalletsExtension:loadFinished(superFunc)
---     Logging.info("ChangePalletsExtension:loadFinished");
-
-    local xmlFile = self.xmlFile;
-
---     filename = "FS25_Fed_Produktions_Pack/Paletten"
-    Logging.devInfo("ChangePalletsExtension xmlFile: %s", xmlFile.filename);
-    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_Fed_Mods_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil then
---         Logging.devInfo("ChangePalletsExtension xmlFile: " .. xmlFile.filename);
-
-        local rootName = xmlFile:getRootName();
-
-        xmlFile:iterate(rootName..".fillUnit.fillUnitConfigurations.fillUnitConfiguration",function(_, key)
-            xmlFile:iterate(key..".fillUnits.fillUnit", function(_, fillUnitKey)
-                local capacity = xmlFile:getValue(fillUnitKey.."#capacity");
-                Logging.devInfo("ChangePalletsExtension capacity: " .. capacity);
-
-                -- Standard Marsch Paletten
-                if capacity == 5000 then
-                    Logging.devInfo("Change PalletsExtension xmlFile: " .. xmlFile.filename);
-                    xmlFile:setValue(fillUnitKey.."#capacity", 1000);
-                end
-
-                -- Prefab wall
-                if capacity == 10000 then
-                    Logging.devInfo("Change PalletsExtension xmlFile: " .. xmlFile.filename);
-                    xmlFile:setValue(fillUnitKey.."#capacity", 4000);
-                end
-            end)
-        end)
-    end
-
-    superFunc(self);
-end
-
--- Vehicle.loadFinished = Utils.overwrittenFunction(Vehicle.loadFinished, ChangePalletsExtension.loadFinished)
-
 -- überschreiben, da diese funktion bestimmt welche menge zum auslagern benutzt wir bei produktionen
 function ChangePalletsExtension.getCapacityFromXml(xmlFile, superFunc)
     local capacity = superFunc(xmlFile);
