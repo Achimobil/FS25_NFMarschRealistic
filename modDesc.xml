@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="111">
     <author>Achimobil</author>
-    <version>0.1.3.9</version>
+    <version>0.2.0.0</version>
     <title>
         <de>NF Marsch Realistik Erweiterung</de>
         <en>NF Marsch Realistic Extension</en>
@@ -20,15 +20,16 @@ Hier die Dinge die nicht angepasst werden sollen:
 Der Mod wird von mir selbst nur auf itch.io. Jeglicher andere Upload ist verboten und somit illegal, Verlinkung nur mit Original-Downloadlink. KEIN Ersatzlink!
 Das Verändern oder erneutes Hochladen, ob ganz oder in Teilen, ist nicht gestattet!
 
-Vorschläge für weitere Anpassungen können gern im <a href="https://github.com/Achimobil/FS25_NFMarschRealistic">Github</a> gemacht werden.
+Fehler und Anregungen gerne auf GitHub: https://github.com/Achimobil/FS25_NFMarschRealistic
 
 Changelog
-0.1.3.9 - Lagerstände bei Produktionen werden im Mehrspieler-Modus jetzt wieder normal häufig aktualisiert (vorher durch die langsamere Produktion zu selten)
-0.1.3.8 - Daunen Paletten gefixed
-0.1.3.7 - FutterXL Ausgang für Tierfutter nicht reduzieren und Flüssigkalk auch nicht reduzieren
-0.1.3.6 - Fertigwände auf 4000 reduziert
-0.1.3.5 - FutterXL in den Tierfuttermengen nicht reduzieren wie die kleine Futterfabrik
-0.1.3.4 - Schlachter wird nun auch in der Produktion korrekt vermindert.
+0.2.0.0
+- Der Schlachter produziert jetzt genauso langsam wie die anderen Gebäude (vorher lief er noch im normalen Tempo)
+- Die große Futterfabrik (FutterXL) stellt Tierfutter und Flüssigkalk wieder in der richtigen Menge her
+- Paletten für Fertigwände sind jetzt kleiner und passen zu den anderen Paletten
+- Daunen-Paletten (z. B. aus der Entenhaltung) haben jetzt die richtige, kleinere Größe
+- Lagerstände bei Produktionen werden im Mehrspieler-Modus jetzt wieder normal häufig aktualisiert (vorher durch die langsamere Produktion zu selten)
+
 0.1.3.2 - Gewächshäuser sind im Preis nun auch um den Faktor 5 reduziert
 0.1.3.1 - Kalkwerk ist nun für Produktion aus Wasser und Steinen nicht mehr gedrosselt, da Kalk für die eigenen Felder benötigt wird
 0.1.3.0 - Fix für Fischer Produktion (lua Fehler)
@@ -49,9 +50,16 @@ Here are the things that should not be adjusted:
 The mod is only uploaded by myself on itch.io. Any other upload is prohibited and therefore illegal, linking only with original download link. NO replacement link!
 Modifying or re-uploading, whether in whole or in part, is not permitted!
 
-Suggestions for further customizations can be made in the <a href=“https://github.com/Achimobil/FS25_NFMarschRealistic”>Github</a>.
+Errors and suggestions are welcome on GitHub: https://github.com/Achimobil/FS25_NFMarschRealistic
 
 Changelog
+0.2.0.0
+- The slaughterhouse now produces just as slowly as the other buildings (it used to still run at normal speed)
+- The large feed factory (FutterXL) now produces animal feed and liquid lime in the correct amount again
+- Pallets for prefab walls are now smaller and match the other pallets
+- Down pallets (e.g. from duck farming) now have the correct, smaller size
+- Storage levels at production buildings in multiplayer now update as often as they normally should again (previously too rarely due to the slower production)
+
 0.1.3.2 - Greenhouses are now also in the price reduced by factor 5
 0.1.3.1 - Lime works are no longer restricted in terms of production from water and stones, as lime is needed for our own fields.
 0.1.3.0 - Fix for Fischer production (lua error)
