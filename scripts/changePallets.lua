@@ -9,7 +9,7 @@ function ChangePalletsExtension:loadFinished(superFunc)
 
 --     filename = "FS25_Fed_Produktions_Pack/Paletten"
     Logging.devInfo("ChangePalletsExtension xmlFile: %s", xmlFile.filename);
-    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil then
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_Fed_Mods_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil then
 --         Logging.devInfo("ChangePalletsExtension xmlFile: " .. xmlFile.filename);
 
         local rootName = xmlFile:getRootName();
@@ -43,12 +43,12 @@ end
 function ChangePalletsExtension.getCapacityFromXml(xmlFile, superFunc)
     local capacity = superFunc(xmlFile);
 
-    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and capacity == 5000 then
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_Fed_Mods_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and capacity == 5000 then
         Logging.devInfo("ChangePalletsExtension.getCapacityFromXml change %s", xmlFile.filename);
         capacity = 1000;
     end
 
-    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and capacity == 10000 then
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_Fed_Mods_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and capacity == 10000 then
         Logging.devInfo("ChangePalletsExtension.getCapacityFromXml change %s", xmlFile.filename);
         capacity = 4000;
     end
@@ -63,13 +63,13 @@ function ChangePalletsExtension:loadFillUnitFromXML(superFunc, xmlFile, key, ent
 
     local result = superFunc(self, xmlFile, key, entry, index);
 
-    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and entry.capacity == 5000 then
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_Fed_Mods_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and entry.capacity == 5000 then
         Logging.devInfo("ChangePalletsExtension.loadFillUnitFromXML change %s", xmlFile.filename);
 --         DebugUtil.printTableRecursively(entry,"_",0,1)
         entry.capacity = 1000;
     end
 
-    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and entry.capacity == 10000 then
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(xmlFile.filename, "FS25_Fed_Mods_Pack") ~= nil or string.find(xmlFile.filename, "FS25_NFMarsch4fach") ~= nil) and string.find(xmlFile.filename:upper(), "PALETTEN") ~= nil and entry.capacity == 10000 then
         Logging.devInfo("ChangePalletsExtension.loadFillUnitFromXML change %s", xmlFile.filename);
 --         DebugUtil.printTableRecursively(entry,"_",0,1)
         entry.capacity = 4000;
@@ -103,7 +103,7 @@ function NfmrPlaceablePalletBuyingStationExtension:onLoad(superFunc, savegame)
 --             local fillTypeIndex = fillType.index
             local palletFilename = fillType.palletFilename
 
-            if (string.find(palletFilename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(palletFilename, "FS25_NFMarsch4fach") ~= nil) then
+            if (string.find(palletFilename, "FS25_Fed_Produktions_Pack") ~= nil or string.find(palletFilename, "FS25_Fed_Mods_Pack") ~= nil or string.find(palletFilename, "FS25_NFMarsch4fach") ~= nil) then
 --                 local storeItem = g_storeManager:getItemByXMLFilename(palletFilename)
 --                 DebugUtil.printTableRecursively(storeItem.configurations,"_",0,2)
                 local priceScale = self.xmlFile:getValue(fillTypeKey.."#priceScale", 1.0)

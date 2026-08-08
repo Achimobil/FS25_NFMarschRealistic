@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="no" ?>
 <modDesc descVersion="108">
     <author>Achimobil</author>
-    <version>0.1.3.7</version>
+    <version>0.1.3.8</version>
     <title>
         <de>NF Marsch Realistik Erweiterung</de>
         <en>NF Marsch Realistic Extension</en>
@@ -23,8 +23,9 @@ Das Verändern oder erneutes Hochladen, ob ganz oder in Teilen, ist nicht gestat
 Vorschläge für weitere Anpassungen können gern im <a href="https://github.com/Achimobil/FS25_NFMarschRealistic">Github</a> gemacht werden.
 
 Changelog
+0.1.3.8 - Daunen Paletten gefixed
 0.1.3.7 - FutterXL Ausgang für Tierfutter nicht reduzieren und Flüssigkalk auch nicht reduzieren
-0.1.3.6 - Fertigwände auf 400 reduziert
+0.1.3.6 - Fertigwände auf 4000 reduziert
 0.1.3.5 - FutterXL in den Tierfuttermengen nicht reduzieren wie die kleine Futterfabrik
 0.1.3.4 - Schlachter wird nun auch in der Produktion korrekt vermindert.
 0.1.3.2 - Gewächshäuser sind im Preis nun auch um den Faktor 5 reduziert

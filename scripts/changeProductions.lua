@@ -54,7 +54,7 @@ function ChangeProductionPoint:onLoad(superFunc, savegame)
     local skipProduction = true;
 
     -- Only stuff from Fed should be changed, so when found, do not skip
-    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") or string.find(xmlFile.filename, "FS25_NFMarsch4fach")) then
+    if (string.find(xmlFile.filename, "FS25_Fed_Produktions_Pack") or string.find(xmlFile.filename, "FS25_Fed_Mods_Pack") or string.find(xmlFile.filename, "FS25_NFMarsch4fach")) then
         skipProduction = false;
     end
 
@@ -207,7 +207,7 @@ function StoreManagerExtension:loadItem(superFunc, rawXMLFilename, baseDir, cust
 
     if storeItem ~= nil and customEnvironment ~= nil then
         StoreManagerExtension.DebugText("StoreManagerExtension rawXMLFilename: %s, customEnvironment %s", rawXMLFilename, customEnvironment);
-        if (string.find(customEnvironment, "FS25_Fed_Produktions_Pack") ~= nil or string.find(customEnvironment, "FS25_NFMarsch4fach") ~= nil) then
+        if (string.find(customEnvironment, "FS25_Fed_Produktions_Pack") ~= nil or string.find(customEnvironment, "FS25_Fed_Mods_Pack") ~= nil or string.find(customEnvironment, "FS25_NFMarsch4fach") ~= nil) then
 
             -- nicht alles billiger machen. Paletten hier ausnehmen
             if string.find(rawXMLFilename:upper(), "PALETTEN") == nil then
@@ -242,6 +242,7 @@ end
 StoreManager.loadItem = Utils.overwrittenFunction(StoreManager.loadItem, StoreManagerExtension.loadItem)
 
 
+---@diagnostic disable-next-line: undefined-global
 FS25_Fed_Produktions_Pack.PlaceableExtendedProductionPoint.onLoad = Utils.overwrittenFunction(FS25_Fed_Produktions_Pack.PlaceableExtendedProductionPoint.onLoad, ChangeProductionPoint.onLoad)
 
 
